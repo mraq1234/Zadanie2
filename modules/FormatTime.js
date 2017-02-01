@@ -1,25 +1,24 @@
-function formatTime(czas) {
-    czas = czas.toFixed(0);
-    var resztaSekund = czas % 3600;
-    var hours = (czas - resztaSekund) / 3600;
-    var seconds = Math.round(resztaSekund % 60);
-    var minutes = (resztaSekund - seconds) / 60;
-    var sformatowanyCzas = '';
+function formatTime(timeInSec) {
+    timeInSec = timeInSec.toFixed(0);
+    var remainder = timeInSec % 3600;
+    var hours = (timeInSec - remainder) / 3600;
+    var seconds = Math.round(remainder % 60);
+    var minutes = (remainder - seconds) / 60;
+    var timeFormatedStr = '';
 
-    // jak nie ma godzin albo minut albo sekund to nie wyświetlam
     if (hours !== 0) {
-        sformatowanyCzas += hours + ' godz. ';
+        timeFormatedStr += hours + ' godz. ';
     }
 
     if (minutes !== 0) {
-        sformatowanyCzas += minutes + ' min. ';
+        timeFormatedStr += minutes + ' min. ';
     }
 
     if (seconds !== 0) {
-        sformatowanyCzas += seconds + ' sek.';
+        timeFormatedStr += seconds + ' sek.';
     }
 
-    return sformatowanyCzas;
+    return timeFormatedStr;
 }
 
 exports.format = formatTime;
